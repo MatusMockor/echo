@@ -13,7 +13,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.posts.index', [
+            'posts' => Post::orderBy('created_at')->get(),
+        ]);
     }
 
     /**
@@ -59,15 +61,21 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', [
+            'post' => $post,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StorePostRequest $request, Post $post)
+    public function update(Post $post, StorePostRequest $request)
     {
-        //
+        $post->update($request->validated());
+
+        return to_route('posts.index')
+            ->with('flashMessage', 'Post was updated')
+            ->with('flashMessageType', 'success');
     }
 
     /**
@@ -75,6 +83,9 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return to_route('dashboard')
+            ->with('flashMessage', 'Post was deleted')
+            ->with('flashMessageType', 'success');
     }
 }

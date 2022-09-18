@@ -1,21 +1,35 @@
 @extends('admin.master')
 
-@section('title', 'Add post')
+@section('title', 'Edit post')
 
 @section('content')
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Now you can create something amazing</h4>
-                <form class="forms-sample" method="post" action="{{route('posts.store')}}">
+                <div class="d-flex justify-content-between">
+                <h4 class="card-title">Please please edit something 😭</h4>
+                    <form method="post" action="{{route('posts.destroy', ['post' => $post->slug])}}">
+                        <button type="submit" class="btn btn-danger mr-2">Delete post</button>
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                </div>
+                <form class="forms-sample" method="post" action="{{route('posts.update', ['post' => $post->slug])}}">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="Title">Title</label>
-                        <input type="text" class="form-control" id="Title" placeholder="Title" name="title">
+                        <input type="text"
+                               class="form-control"
+                               id="Title"
+                               placeholder="Title"
+                               name="title"
+                               value="{{$post->title}}"
+                        >
                     </div>
                     <div class="form-group">
                         <label for="Excerpt">Excerpt</label>
-                        <x-trix-field id="excerpt" name="excerpt"/>
+                        <x-trix-field id="excerpt" value="{!! $post->excerpt !!}" name="excerpt"/>
                     </div>
                     {{--                    <div class="form-group">--}}
                     {{--                        <label for="exampleSelectGender">Gender</label>--}}
@@ -37,7 +51,7 @@
                     {{--                    </div>--}}
                     <div class="form-group">
                         <label for="body">Body</label>
-                        <x-trix-field id="body" name="body"/>
+                        <x-trix-field id="body" name="body" value="{!! $post->body !!}"/>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <a href="{{ route('posts.index')  }}" class="btn btn-light">Cancel</a>
