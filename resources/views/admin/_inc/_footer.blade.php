@@ -16,6 +16,6 @@
 
 <!-- plugins:js -->
 <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
-<!-- endinject -->
+@yield('scripts')
 </body>
 </html>

@@ -1,15 +1,14 @@
 <template>
-  <div v-if="isVisible"
-       :class="'alert alert-'+ type +' alert-dismissible show fade'">
-    wasd
-    <button
-        @click="hideAlert"
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close">
-    </button>
-  </div>
+  <Transition>
+    <div v-if="isVisible"
+         :class="'alert alert-'+ type +' alert-dismissible show mb-5'"
+         role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </Transition>
 </template>
 
 <script>
@@ -18,7 +17,6 @@ export default {
   props: {
     message: {
       type: String,
-      default: ""
     },
     type: {
       type: String,
@@ -27,24 +25,38 @@ export default {
   },
   data() {
     return {
-      isVisible: true
+      isVisible: false
     }
   },
   methods: {
     showAlert() {
       this.isVisible = true;
+      setTimeout(() => this.hideAlert(), 5000);
     },
 
     hideAlert() {
       this.isVisible = false;
-
-      setTimeout(() => this.hideAlert(), 5000);
     },
+  },
+
+  created() {
+    if (this.message) {
+      this.showAlert();
+    }
   }
 
 }
 </script>
 
 <style scoped>
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
 
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>

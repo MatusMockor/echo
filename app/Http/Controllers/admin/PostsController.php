@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\StorePostRequest;
 use App\Models\admin\Post;
-use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
@@ -27,9 +27,25 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        //
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->slug = \Str::slug($request->title);
+        $post->excerpt = $request->excerpt;
+        $post->body = $request->body;
+
+        // Todoo
+
+        $post->section = "Test";
+        $post->image = "Test";
+
+        $post->save();
+
+        return to_route('dashboard')
+            ->with('flashMessage', 'Post was saved')
+            ->with('flashMessageType', 'success');
     }
 
     /**
@@ -51,7 +67,7 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePostRequest $request, Post $post)
     {
         //
     }

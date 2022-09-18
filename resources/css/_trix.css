@@ -4,6 +4,7 @@
     flex: 1 0 33%;
     padding: 0 0.5em;
     max-width: 33%;
+    height: 50000px;
 }
 
 .trix-content .attachment-gallery.attachment-gallery--2 > .attachment,
