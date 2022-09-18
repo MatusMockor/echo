@@ -21,7 +21,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('backend.posts.create');
+        return view('admin.posts.create');
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
         })->name('dashboard');
 
         Route::prefix('posts')->group(function () {
-
+            Route::get('/create', [PostsController::class, 'create'])->name('posts.create');
         });
     });
 });

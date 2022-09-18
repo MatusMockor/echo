@@ -1,4 +1,5 @@
 import './bootstrap';
+import './libs/trix';
 import {createApp} from "vue";
 import FlashMessageAlert from "./components/admin/FlashMessageAlert.vue";
 

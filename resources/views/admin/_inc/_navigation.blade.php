@@ -9,6 +9,7 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                aria-controls="ui-basic">
+                <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Posts</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -17,7 +18,7 @@
                     <li class="nav-item"><a class="nav-link"
                                             href="">Show posts</a></li>
                     <li class="nav-item"><a class="nav-link"
-                                            href="">Create post</a></li>
+                                            href="{{route('posts.create')}}">Create post</a></li>
                 </ul>
             </div>
         </li>

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/vertical-layout-light/style.css')}}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}"/>
+    <x-rich-text-trix-styles />
     @vite('resources/js/app.js')
 </head>
 <body>
