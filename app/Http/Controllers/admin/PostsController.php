@@ -29,7 +29,6 @@ class PostsController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-
         $post = new Post();
         $post->title = $request->title;
         $post->slug = \Str::slug($request->title);
@@ -37,7 +36,6 @@ class PostsController extends Controller
         $post->body = $request->body;
 
         // Todoo
-
         $post->section = "Test";
         $post->image = "Test";
 

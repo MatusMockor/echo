@@ -231,6 +231,17 @@
                 </div>
                 <div class="row d-flex justify-content-center">
                     <div class="col-12">
+                        @if ($errors->any())
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                                <flash-message-alert
+                                        message="{{ $error }}"
+                                        type="danger"
+                                />
+                            @endforeach
+                            </ul>
+                        @endif
                         <flash-message-alert
                                 message="{{ session('flashMessage') }}"
                                 type="{{session('flashMessageType')}}"
