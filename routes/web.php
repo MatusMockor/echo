@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\PostsController;
 use App\Http\Controllers\admin\TeamsController;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::prefix('dashboard')->group(function () {
 
-        Route::get('/', function () {
-            return view('admin.master');
-        })->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::prefix('posts')->group(function () {
             Route::get('/', [PostsController::class, 'index'])->name('posts.index');
