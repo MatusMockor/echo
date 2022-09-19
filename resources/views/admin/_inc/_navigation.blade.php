@@ -22,5 +22,21 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="collapse" href="#ui-teams" aria-expanded="false"
+               aria-controls="ui-teams">
+                <i class="icon-paper menu-icon"></i>
+                <span class="menu-title">Teams</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-teams">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link"
+                                            href="{{route('teams.index')}}">Show teams</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="{{route('teams.create')}}">Create team</a></li>
+                </ul>
+            </div>
+        </li>
     </ul>
 </nav>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\PostsController;
+use App\Http\Controllers\admin\TeamsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{post:slug}/edit', [PostsController::class, 'edit'])->name('posts.edit');
             Route::put('/{post:slug}', [PostsController::class, 'update'])->name('posts.update');
             Route::delete('{post:slug}', [PostsController::class, 'destroy'])->name('posts.destroy');
+        });
+
+        Route::prefix('teams')->group(function () {
+            Route::get('/', [TeamsController::class, 'index'])->name('teams.index');
+            Route::get('/create', [TeamsController::class, 'create'])->name('teams.create');
+            Route::post('/', [TeamsController::class, 'store'])->name('teams.store');
+            Route::get('/{team:slug}/edit', [TeamsController::class, 'edit'])->name('teams.edit');
         });
     });
 });

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\admin\StorePostRequest;
+use App\Http\Requests\admin\StoreTeamRequest;
 use App\Models\admin\Post;
 
 class PostsController extends Controller
@@ -29,7 +29,7 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest $request)
+    public function store(StoreTeamRequest $request)
     {
         $post = new Post();
         $post->title = $request->title;
@@ -69,7 +69,7 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Post $post, StorePostRequest $request)
+    public function update(Post $post, StoreTeamRequest $request)
     {
         $post->update($request->validated());
 
