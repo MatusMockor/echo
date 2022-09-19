@@ -14,7 +14,7 @@ class TeamsController extends Controller
     public function index()
     {
         return view('admin.teams.index', [
-            'teams' => Team::all(),
+            'teams' => Team::orderBy('created_at')->get(),
         ]);
     }
 
