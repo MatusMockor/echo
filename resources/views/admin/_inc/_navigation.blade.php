@@ -9,7 +9,6 @@
         <li class="nav-item">
             <a class="nav-link active" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                aria-controls="ui-basic">
-                <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Posts</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -25,7 +24,6 @@
         <li class="nav-item">
             <a class="nav-link active" data-toggle="collapse" href="#ui-teams" aria-expanded="false"
                aria-controls="ui-teams">
-                <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Teams</span>
                 <i class="menu-arrow"></i>
             </a>
