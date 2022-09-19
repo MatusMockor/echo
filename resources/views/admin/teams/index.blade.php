@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'All Posts')
+@section('title', 'All Teams')
 
 @section('content')
 
