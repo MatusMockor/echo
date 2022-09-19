@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->id();
             $table->string('title', 200);
             $table->string('slug')->unique();
-            $table->text('section');
             $table->text('excerpt');
             $table->text('body');
             $table->text('image');
