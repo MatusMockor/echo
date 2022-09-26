@@ -42,8 +42,6 @@ export default {
   data() {
     return {
       sectionName: "",
-      flashMessage: "",
-      flashMessageType: "",
       isLoading: false,
       sectionBody: "",
     }
@@ -81,7 +79,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
