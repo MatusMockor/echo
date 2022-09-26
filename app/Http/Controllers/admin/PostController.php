@@ -7,7 +7,7 @@ use App\Http\Requests\admin\StorePostRequest;
 use App\Models\admin\Post;
 use App\Models\admin\Team;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.

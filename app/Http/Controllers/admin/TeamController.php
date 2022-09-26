@@ -7,7 +7,7 @@ use App\Http\Requests\admin\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
 use App\Models\admin\Team;
 
-class TeamsController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
