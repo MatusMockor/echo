@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StoreTeamRequest;
+use App\Http\Requests\UpdateTeamRequest;
 use App\Models\admin\Team;
 
 class TeamsController extends Controller
@@ -65,7 +66,7 @@ class TeamsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreTeamRequest $request, Team $team)
+    public function update(UpdateTeamRequest $request, Team $team)
     {
         $team->update($request->validated());
     }
