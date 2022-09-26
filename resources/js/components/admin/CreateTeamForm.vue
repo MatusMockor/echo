@@ -16,9 +16,19 @@
                 v-model="sectionBody"
       > </textarea>
     </div>
-    <button @click.prevent="sendForm"
-            class="btn btn-primary mr-2">
+    <button
+        v-show="!isLoading"
+        @click.prevent="sendForm"
+        class="btn btn-primary mr-2">
       Submit
+    </button>
+    <button
+        v-show="isLoading"
+        @click.prevent
+        class="btn btn-primary mr-2"
+        disabled
+    >
+      <i class="fas fa-spinner fa-spin"></i>
     </button>
     <a :href="routeBack" class="btn btn-light">Cancel</a>
   </form>
@@ -54,15 +64,17 @@ export default {
           name: this.sectionName,
           body: this.sectionBody
         })
+            .then(response => this.createFlashMessage(response))
             .catch(error => {
               console.log(error);
-              this.createErrFlashMessage(error.response.data.message)
+              this.createErrFlashMessage(error.response.data.message);
+              this.isLoading = false;
             })
-            .then(response => this.createFlashMessage(response))
             .finally(() => {
               this.loading = false;
               this.sectionName = "";
               this.sectionBody = "";
+              this.isLoading = false;
             });
       }
     },
