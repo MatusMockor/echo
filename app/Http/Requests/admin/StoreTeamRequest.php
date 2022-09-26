@@ -15,6 +15,7 @@ class StoreTeamRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:teams|string',
+            'body'  => 'required|string',
         ];
     }
 }

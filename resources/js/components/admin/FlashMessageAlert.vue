@@ -1,9 +1,9 @@
 <template>
   <Transition>
     <div v-if="isVisible"
-         :class="'alert alert-'+ type +' alert-dismissible show mb-5'"
+         :class="'alert alert-'+ flashMessageType +' alert-dismissible show mb-5'"
          role="alert">
-      {{ message }}
+      {{ flashMessage }}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -25,7 +25,9 @@ export default {
   },
   data() {
     return {
-      isVisible: false
+      isVisible: false,
+      flashMessageType: this.type,
+      flashMessage: this.message
     }
   },
   methods: {
@@ -40,6 +42,18 @@ export default {
   },
 
   created() {
+    window.eventBus.on("create-error-flash-message", (event) => {
+      this.flashMessage = event;
+      this.flashMessageType = "danger";
+      this.showAlert();
+    });
+
+    window.eventBus.on("create-success-flash-message", (event) => {
+      this.flashMessage = event;
+      this.flashMessageType = "success";
+      this.showAlert();
+    });
+
     if (this.message) {
       this.showAlert();
     }

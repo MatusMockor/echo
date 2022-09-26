@@ -34,6 +34,7 @@ class TeamsController extends Controller
         $team = new Team();
 
         $team->name = $request->name;
+        $team->body = $request->body;
         $team->slug = \Str::slug($request->name);
         $team->save();
 

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property string $name
  * @property string $slug
+ * @property string $body
  * @property string $image
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at

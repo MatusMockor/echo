@@ -9,22 +9,22 @@
              autofocus
       >
     </div>
+    <div class="form-group">
+      <textarea class="form-control"
+                placeholder="Some awesome text of this amazing section please"
+                name="sectionBody"
+                v-model="sectionBody"
+      > </textarea>
+    </div>
     <button @click.prevent="sendForm"
             class="btn btn-primary mr-2">
       Submit
     </button>
     <a :href="routeBack" class="btn btn-light">Cancel</a>
   </form>
-
-  <flash-message-alert v-if="flashMessage"
-                       :message="flashMessage"
-                       :type="flashMessageType"
-
-  />
 </template>
 
 <script>
-import flashMessageAlert from "./FlashMessageAlert.vue";
 
 export default {
   name: "CreateTeamForm",
@@ -44,7 +44,8 @@ export default {
       sectionName: "",
       flashMessage: "",
       flashMessageType: "",
-      isLoading: false
+      isLoading: false,
+      sectionBody: "",
     }
   },
   methods: {
@@ -52,30 +53,30 @@ export default {
       if (this.sectionName) {
 
         axios.post(this.sendFormRoute, {
-          name: this.sectionName
+          name: this.sectionName,
+          body: this.sectionBody
         })
-            .then(response => this.checkAjaxResponse(response))
-            .catch(error => console.log(error))
+            .catch(error => {
+              console.log(error);
+              this.createErrFlashMessage(error.response.data.message)
+            })
+            .then(response => this.createFlashMessage(response))
             .finally(() => {
-              this.loading = false
+              this.loading = false;
+              this.sectionName = "";
+              this.sectionBody = "";
             });
-      } else {
-
-        this.flashMessage = "Section name is required";
-        this.flashMessageType = "danger";
-        this.clearFlashMessage();
       }
     },
 
-    clearFlashMessage() {
-      setTimeout(() => this.flashMessage = "", 5000);
+    createErrFlashMessage(message) {
+      window.eventBus.emit("create-error-flash-message", message);
     },
 
-    checkAjaxResponse(response) {
-      this.flashMessage = response.status === 200 ? "Yuhuuu you did it" : "";
-      this.flashMessageType = response.status === 200 ? "success" : "";
-      this.clearFlashMessage();
-      this.sectionName = "";
+    createFlashMessage(response) {
+      if (response.status === 200) {
+        window.eventBus.emit("create-success-flash-message", "Yupiii you did it");
+      }
     }
   }
 }
