@@ -54,7 +54,12 @@ class TeamsController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        $updateRoute = route('teams.update', ['team' => $team->slug]);
+
+        return view('admin.teams.edit', [
+            'team'        => $team,
+            'updateRoute' => $updateRoute,
+        ]);
     }
 
     /**
@@ -62,7 +67,7 @@ class TeamsController extends Controller
      */
     public function update(StoreTeamRequest $request, Team $team)
     {
-        //
+        $team->update($request->validated());
     }
 
     /**
@@ -70,6 +75,10 @@ class TeamsController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+
+        return to_route('dashboard')
+            ->with('flashMessage', 'Team was deleted 😭')
+            ->with('flashMessageType', 'success');
     }
 }

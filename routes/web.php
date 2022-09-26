@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [PostsController::class, 'store'])->name('posts.store');
             Route::get('/{post:slug}/edit', [PostsController::class, 'edit'])->name('posts.edit');
             Route::put('/{post:slug}', [PostsController::class, 'update'])->name('posts.update');
-            Route::delete('{post:slug}', [PostsController::class, 'destroy'])->name('posts.destroy');
+            Route::delete('/{post:slug}', [PostsController::class, 'destroy'])->name('posts.destroy');
         });
 
         Route::prefix('teams')->group(function () {
@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/create', [TeamsController::class, 'create'])->name('teams.create');
             Route::post('/', [TeamsController::class, 'store'])->name('teams.store');
             Route::get('/{team:slug}/edit', [TeamsController::class, 'edit'])->name('teams.edit');
+            Route::patch('/{team:slug}', [TeamsController::class, 'update'])->name('teams.update');
+            Route::delete('/{team:slug}', [TeamsController::class, 'destroy'])->name('teams.destroy');
         });
     });
 });
