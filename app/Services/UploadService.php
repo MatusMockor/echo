@@ -25,8 +25,8 @@ class UploadService
         Image::create([
             'imageable_type' => get_class($model),
             'imageable_id'   => $model->id,
-            'fileName'       => $file->getClientOriginalName(),
-            'filePath'       => 'test',
+            'imageName'      => $file->getClientOriginalName(),
+            'imagePath'      => $path,
             'mime'           => $file->getClientMimeType(),
             'ext'            => $file->getClientOriginalExtension(),
             'size'           => $file->getSize(),
