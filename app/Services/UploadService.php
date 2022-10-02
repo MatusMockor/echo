@@ -22,12 +22,10 @@ class UploadService
             $this->updateFileToDB($model->image, $data);
         }
 
-
         $path = $this->uploadFile($model, $file);
         $data = $this->prepareDataForDB($model, $path, $file);
         $this->saveFileInfoToDB($data);
     }
-
 
     /**
      * @param Model $model
@@ -39,7 +37,6 @@ class UploadService
         $folderStructure = \Str::lower(class_basename($model)) . 's' . "/$model->id";
         return $file->storePublicly('/images' . "/$folderStructure");
     }
-
 
     /**
      * @param Image $image
