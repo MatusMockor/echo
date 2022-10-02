@@ -20,11 +20,12 @@ class UploadService
             $path = $this->uploadFile($model, $file);
             $data = $this->prepareDataForDB($model, $path, $file);
             $this->updateFileToDB($model->image, $data);
+        } else {
+            $path = $this->uploadFile($model, $file);
+            $data = $this->prepareDataForDB($model, $path, $file);
+            $this->saveFileInfoToDB($data);
         }
 
-        $path = $this->uploadFile($model, $file);
-        $data = $this->prepareDataForDB($model, $path, $file);
-        $this->saveFileInfoToDB($data);
     }
 
     /**
