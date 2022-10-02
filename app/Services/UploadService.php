@@ -12,7 +12,7 @@ class UploadService
         if (!$file->isValid()) {
             return back()
                 ->with('flashMessage', 'File was not uploaded')
-                ->with('flashMessageType', 'error');
+                ->with('flashMessageType', 'danger');
         }
 
         if ($model->image?->imagePath) {
