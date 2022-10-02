@@ -61,5 +61,7 @@
             </div>
         </div>
     </div>
-    <img src="{{asset('storage/' . $post->image?->imagePath)}}" alt="">
+    <div class="card-body">
+        <img class="card-img" src="{{asset('storage/' . $post->image?->imagePath)}}" alt="{{$post->image?->imageName}}">
+    </div>
 @endsection
