@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePlayerRequest;
 use App\Http\Requests\UpdatePlayerRequest;
-use App\Models\admin\Player;
+use App\Models\Player;
 
 class PlayerController extends Controller
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\admin\Post
+ * App\Models\Post
  *
  * @property string $name
  * @property string $slug

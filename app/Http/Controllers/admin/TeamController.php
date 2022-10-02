@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
-use App\Models\admin\Team;
+use App\Models\Team;
 
 class TeamController extends Controller
 {

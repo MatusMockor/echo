@@ -4,8 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StorePostRequest;
-use App\Models\admin\Post;
-use App\Models\admin\Team;
+use App\Models\Post;
 
 class PostController extends Controller
 {

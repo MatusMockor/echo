@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\Post;
-use App\Models\admin\Team;
-use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\Team;
 
 class DashboardController extends Controller
 {
