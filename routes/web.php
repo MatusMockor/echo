@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\GameResultController;
 use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\admin\TeamController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{team:slug}/edit', [TeamController::class, 'edit'])->name('teams.edit');
             Route::patch('/{team:slug}', [TeamController::class, 'update'])->name('teams.update');
             Route::delete('/{team:slug}', [TeamController::class, 'destroy'])->name('teams.destroy');
+        });
+
+        Route::prefix('game-results')->group(function () {
+            Route::get('/', [GameResultController::class, 'index'])->name('gameResult.index');
+            Route::get('/create', [GameResultController::class, 'create'])->name('gameResult.create');
+            Route::patch('/', [GameResultController::class, 'store'])->name('gameResult.store');
         });
     });
 });
