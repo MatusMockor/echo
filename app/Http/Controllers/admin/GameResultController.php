@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\GameResult;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class GameResultController extends Controller
@@ -21,7 +22,17 @@ class GameResultController extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::all();
+
+        if (!count($teams)) {
+            return to_route('dashboard')
+                ->with('flashMessage', 'If you want add game result first you need add team')
+                ->with('flashMessageType', 'danger');
+        }
+
+        return view('admin.gameResults.create', [
+            'teams' => $teams,
+        ]);
     }
 
     /**
