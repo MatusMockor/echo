@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Image|null $postImage
  */
 class Post extends Model
 {
@@ -43,4 +44,9 @@ class Post extends Model
         'body',
         'image',
     ];
+
+    public function postImage()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

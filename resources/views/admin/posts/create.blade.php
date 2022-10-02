@@ -7,7 +7,8 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Now you can create something amazing</h4>
-                <form class="forms-sample" method="post" action="{{route('posts.store')}}">
+                <form class="forms-sample" method="post" action="{{route('posts.store')}}"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="Title">Title</label>
@@ -24,17 +25,19 @@
                     {{--                            <option>Female</option>--}}
                     {{--                        </select>--}}
                     {{--                    </div>--}}
-                    {{--                    <div class="form-group">--}}
-                    {{--                        <label>File upload</label>--}}
-                    {{--                        <input type="file" name="img[]" class="file-upload-default">--}}
-                    {{--                        <div class="input-group col-xs-12">--}}
-                    {{--                            <input type="text" class="form-control file-upload-info" disabled--}}
-                    {{--                                   placeholder="Upload Image">--}}
-                    {{--                            <span class="input-group-append">--}}
-                    {{--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>--}}
-                    {{--                        </span>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
+                    <div class="form-group">
+                        <label>File upload</label>
+                        <input type="file" name="image" class="file-upload-default">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                       aria-describedby="inputGroupFileAddon01"
+                                       name="image"
+                                >
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="body">Body</label>
                         <x-trix-field id="body" name="body"/>

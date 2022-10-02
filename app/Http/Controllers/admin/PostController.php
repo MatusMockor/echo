@@ -5,9 +5,17 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StorePostRequest;
 use App\Models\Post;
+use App\Services\UploadService;
 
 class PostController extends Controller
 {
+    protected UploadService $uploadService;
+
+    public function __construct(UploadService $uploadService)
+    {
+        $this->uploadService = $uploadService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -38,10 +46,11 @@ class PostController extends Controller
         $post->body = $request->body;
 
         // Todoo
-        $post->section = "Test";
-        $post->image = "Test";
-
         $post->save();
+
+        if ($request->file('image')) {
+            $this->uploadService->saveFile($post, $request->file('image'));
+        }
 
         return to_route('dashboard')
             ->with('flashMessage', 'Post was saved')
