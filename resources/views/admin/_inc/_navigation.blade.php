@@ -36,5 +36,20 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="collapse" href="#ui-gameResult" aria-expanded="false"
+               aria-controls="ui-gameResult">
+                <span class="menu-title">Game Result</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-gameResult">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link"
+                                            href="{{route('gameResult.index')}}">Show results</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="{{route('gameResult.create')}}">Create result</a></li>
+                </ul>
+            </div>
+        </li>
     </ul>
 </nav>
