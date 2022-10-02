@@ -234,7 +234,6 @@
                         @if ($errors->any())
                             <ul>
                             @foreach ($errors->all() as $error)
-                                <li>{{$error}}</li>
                                 <flash-message-alert
                                         message="{{ $error }}"
                                         type="danger"
