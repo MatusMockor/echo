@@ -27,7 +27,6 @@
                     {{--                    </div>--}}
                     <div class="form-group">
                         <label>File upload</label>
-                        <input type="file" name="image" class="file-upload-default">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <input type="file" class="custom-file-input" id="inputGroupFile01"
