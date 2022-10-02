@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Services\UploadService;
 
@@ -44,8 +45,6 @@ class PostController extends Controller
         $post->slug = \Str::slug($request->title);
         $post->excerpt = $request->excerpt;
         $post->body = $request->body;
-
-        // Todoo
         $post->save();
 
         if ($request->file('image')) {
@@ -78,9 +77,13 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Post $post, StorePostRequest $request)
+    public function update(Post $post, UpdatePostRequest $request)
     {
-        $post->update($request->validated());
+        $post->update($request->safe()->except(['image']));
+
+        if ($request->file('image')) {
+            $this->uploadService->saveFile($post, $request->file('image'));
+        }
 
         return to_route('posts.index')
             ->with('flashMessage', 'Post was updated')

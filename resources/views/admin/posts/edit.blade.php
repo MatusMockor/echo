@@ -7,16 +7,17 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                <h4 class="card-title">Please please edit something 😭</h4>
+                    <h4 class="card-title">Please please edit something 😭</h4>
                     <form method="post" action="{{route('posts.destroy', ['post' => $post->slug])}}">
                         <button type="submit" class="btn btn-danger mr-2">Delete post</button>
                         @csrf
                         @method('DELETE')
                     </form>
                 </div>
-                <form class="forms-sample" method="post" action="{{route('posts.update', ['post' => $post->slug])}}">
+                <form class="forms-sample" method="post" action="{{route('posts.update', ['post' => $post->slug])}}"
+                      enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+                    @method('PATCH')
                     <div class="form-group">
                         <label for="Title">Title</label>
                         <input type="text"
@@ -38,17 +39,18 @@
                     {{--                            <option>Female</option>--}}
                     {{--                        </select>--}}
                     {{--                    </div>--}}
-                    {{--                    <div class="form-group">--}}
-                    {{--                        <label>File upload</label>--}}
-                    {{--                        <input type="file" name="img[]" class="file-upload-default">--}}
-                    {{--                        <div class="input-group col-xs-12">--}}
-                    {{--                            <input type="text" class="form-control file-upload-info" disabled--}}
-                    {{--                                   placeholder="Upload Image">--}}
-                    {{--                            <span class="input-group-append">--}}
-                    {{--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>--}}
-                    {{--                        </span>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
+                    <div class="form-group">
+                        <label>File upload</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                       aria-describedby="inputGroupFileAddon01"
+                                       name="image"
+                                >
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="body">Body</label>
                         <x-trix-field id="body" name="body" value="{!! $post->body !!}"/>
@@ -59,4 +61,5 @@
             </div>
         </div>
     </div>
+    <img src="{{asset('storage/' . $post->image?->imagePath)}}" alt="">
 @endsection

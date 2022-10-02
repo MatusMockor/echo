@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * App\Models\Post
@@ -42,10 +43,13 @@ class Post extends Model
         'section',
         'excerpt',
         'body',
-        'image',
     ];
 
-    public function postImage()
+    protected $with = [
+        'image'
+    ];
+
+    public function image(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
     }
