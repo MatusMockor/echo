@@ -64,15 +64,21 @@ class GameResultController extends Controller
      */
     public function edit(GameResult $gameResult)
     {
-        //
+        return view('admin.gameResults.edit', [
+            'teams'      => Team::all(),
+            'gameResult' => $gameResult,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, GameResult $gameResult)
+    public function update(StoreGameResultRequest $request, GameResult $gameResult)
     {
-        //
+        $gameResult->update($request->validated());
+        return to_route('gameResult.index')
+            ->with('flashMessage', 'Yes. You update game result!')
+            ->with('flashMessageType', 'success');
     }
 
     /**

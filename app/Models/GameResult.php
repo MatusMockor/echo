@@ -43,4 +43,9 @@ class GameResult extends Model
         'enemy_score',
         'mvp_player',
     ];
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }
