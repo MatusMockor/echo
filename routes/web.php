@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [GameResultController::class, 'index'])->name('gameResult.index');
             Route::get('/create', [GameResultController::class, 'create'])->name('gameResult.create');
             Route::post('/', [GameResultController::class, 'store'])->name('gameResult.store');
-            Route::get('/{game}/edit', [GameResultController::class, 'edit'])->name('gameResult.edit');
+            Route::get('/{gameResult}/edit', [GameResultController::class, 'edit'])->name('gameResult.edit');
         });
     });
 });
