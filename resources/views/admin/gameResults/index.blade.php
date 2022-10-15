@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'All Teams')
+@section('title', 'All Game results')
 
 @section('content')
 
