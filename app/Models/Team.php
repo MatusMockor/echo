@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Post
  *
- * @property string $name
- * @property string $slug
- * @property string $body
- * @property string $image
- * @property int $id
+ * @property string                          $name
+ * @property string                          $slug
+ * @property string                          $body
+ * @property string                          $image
+ * @property int                             $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
@@ -37,4 +38,9 @@ class Team extends Model
         'slug',
         'image',
     ];
+
+    public function players(): HasMany
+    {
+        return $this->hasMany(Player::class);
+    }
 }
