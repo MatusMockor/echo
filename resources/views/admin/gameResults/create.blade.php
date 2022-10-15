@@ -8,8 +8,8 @@
             <div class="card-body">
                 <h4 class="card-title">Please add some game result</h4>
                 <game-result-form
-                        routeBack="{{route('gameResult.index')}}"
-                        routeSendForm="{{route('gameResult.store')}}"
+                        route-back="{{route('gameResult.index')}}"
+                        route-send-form="{{route('gameResult.store')}}"
                         :teams="{{json_encode($teams)}}"
                 />
             </div>

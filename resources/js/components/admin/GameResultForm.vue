@@ -25,10 +25,20 @@
       </div>
     </div>
     <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="enemyName">MVP Player</label>
+          <input type="text" class="form-control" id="MvpPlayer" v-model="MvpPlayer">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
       <label for="teams">Our team section</label>
-      <select class="form-control" id="teams">
-        <option v-for="(team, index) in teams" :key="index"
-                :value="team.id">{{ team.name }}
+      <select class="form-control" id="teams" v-model="selectedTeam">
+        <option
+            v-for="(team, index) in teams" :key="index"
+            :value="team.id"
+        >{{ team.name }}
         </option>
       </select>
     </div>
@@ -74,11 +84,42 @@ export default {
       ourName: "ECHO GG",
       ourScore: 2,
       enemyName: "plebs",
-      enemyScore: 0
+      enemyScore: 0,
+      MvpPlayer: "REQUIRED",
+      selectedTeam: ''
     }
   },
   methods: {
     sendForm() {
+
+      this.isLoading = true;
+      axios.post(this.routeSendForm, {
+        team_id: this.selectedTeam,
+        our_name: this.ourName,
+        our_score: this.ourScore,
+        enemy_name: this.enemyName,
+        enemy_score: this.enemyScore,
+        mvp_player: this.MvpPlayer
+      })
+          .then(response => this.createFlashMessage(response))
+          .catch(error => {
+            console.log(error);
+            this.createErrFlashMessage(error.response.data.message);
+            this.isLoading = false;
+          })
+          .finally(() => {
+            this.isLoading = false;
+          });
+    },
+
+    createErrFlashMessage(message) {
+      window.eventBus.emit("create-error-flash-message", message);
+    },
+
+    createFlashMessage(response) {
+      if (response.status === 200) {
+        window.eventBus.emit("create-success-flash-message", "Yupiii you did it");
+      }
     }
   }
 }

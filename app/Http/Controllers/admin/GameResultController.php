@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreGameResultRequest;
 use App\Models\GameResult;
 use App\Models\Team;
 use Illuminate\Http\Request;
@@ -14,7 +15,9 @@ class GameResultController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.gameResults.index', [
+            'games' => GameResult::orderBy('created_at', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -38,9 +41,14 @@ class GameResultController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreGameResultRequest $request)
     {
-        //
+        GameResult::create($request->validated());
+
+        return response()->json([
+            'status'  => 200,
+            'message' => 'messaaa',
+        ]);
     }
 
     /**
