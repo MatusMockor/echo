@@ -22,6 +22,10 @@
                             <td class="pl-0">Teams</td>
                             <td class="text-muted">{{$teamsCount}}</td>
                         </tr>
+                        <tr>
+                            <td class="pl-0">Games</td>
+                            <td class="text-muted">{{$gamesCount}}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

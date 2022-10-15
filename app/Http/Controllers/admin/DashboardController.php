@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\GameResult;
 use App\Models\Post;
 use App\Models\Team;
 
@@ -13,6 +14,7 @@ class DashboardController extends Controller
         return view('admin.index', [
             'postsCount' => Post::count(),
             'teamsCount' => Team::count(),
+            'gamesCount' => GameResult::count(),
         ]);
     }
 }
