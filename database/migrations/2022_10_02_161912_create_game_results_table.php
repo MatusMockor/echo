@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('game_results', function (Blueprint $table) {
             $table->id();
             $table->foreignId('team_id');
-            $table->string('ourName')->default('ECHO GG');
-            $table->integer('ourScore');
-            $table->string('enemyName')->default('Plebs');
-            $table->integer('enemyScore');
-            $table->string('MVPPlayer');
+            $table->string('our_name')->default('ECHO GG');
+            $table->integer('our_score');
+            $table->string('enemy_name')->default('Plebs');
+            $table->integer('enemy_score');
+            $table->string('mvp_player');
             $table->timestamps();
         });
     }
