@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\GameResultController;
 use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\admin\TeamController;
+use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,15 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [GameResultController::class, 'store'])->name('gameResult.store');
             Route::get('/{gameResult}/edit', [GameResultController::class, 'edit'])->name('gameResult.edit');
             Route::patch('/{gameResult}', [GameResultController::class, 'update'])->name('gameResult.update');
+        });
+
+        Route::prefix('players')->group(function () {
+            Route::get('/', [PlayerController::class, 'index'])->name('players.index');
+            Route::get('/create', [PlayerController::class, 'create'])->name('players.create');
+            Route::post('/', [PlayerController::class, 'store'])->name('players.store');
+            Route::get('/{player:slug}/edit', [PlayerController::class, 'edit'])->name('players.edit');
+            Route::patch('/{player:slug}', [PlayerController::class, 'update'])->name('players.update');
+            Route::delete('/{player:slug}', [PlayerController::class, 'destroy'])->name('players.destroy');
         });
     });
 });
