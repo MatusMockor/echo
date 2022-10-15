@@ -71,7 +71,6 @@ export default {
               this.isLoading = false;
             })
             .finally(() => {
-              this.loading = false;
               this.sectionName = "";
               this.sectionBody = "";
               this.isLoading = false;
