@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePlayerRequest;
 use App\Http\Requests\UpdatePlayerRequest;
 use App\Models\Player;
+use App\Models\Team;
 
 class PlayerController extends Controller
 {
@@ -21,7 +22,17 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::all();
+
+        if (!count($teams)) {
+            return to_route('teams.create')
+                ->with('flashMessage', 'If you want add game result first you need add team')
+                ->with('flashMessageType', 'danger');
+        }
+
+        return view('admin.players.create', [
+            'teams' => $teams,
+        ]);
     }
 
     /**
