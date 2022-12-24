@@ -1,0 +1,26 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: composer install --no-dev --optimize-autoloader
+      - name: Generate application key
+        run: php artisan key:generate
+      - name: Build assets
+        run: npm run production
+      - name: Upload code to server
+        uses: appleboy/scp-action@v1
+        with:
+          host: echogg.eu
+          username: codex.echogg.eu
+          password: ${{ secrets.DEPLOY_PASSWORD }}
+          source: ./
+          target: /echogg.eu/web
