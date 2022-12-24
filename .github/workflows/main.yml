@@ -35,6 +35,6 @@ jobs:
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with: 
-          server: ftp.enterflash.com
-          username: testcicd@enterflash.com
+          server: echogg.eu
+          username: codex.echogg.eu
           password: ${{ secrets.ftp_password }}
