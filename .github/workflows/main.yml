@@ -20,4 +20,4 @@ jobs:
           server: echogg.eu
           username: codex.echogg.eu
           password: ${{ secrets.ftp_password }}
-          server-dir: /echogg.eu/web
+          server-dir: /echogg.eu/web/
