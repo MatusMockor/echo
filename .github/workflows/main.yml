@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install dependencies
         run: composer install --no-dev --optimize-autoloader
-      # - name: Build assets
-        # run: npm run production
+      - name: Build assets
+        run: npm run build
       - name: Upload code to server
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
