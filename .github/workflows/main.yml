@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install dependencies
-        run: composer install --no-dev --optimize-autoloader
-      - name: Build assets
-        run: npm run production
+      # - name: Install dependencies
+        # run: composer install --no-dev --optimize-autoloader
+      # - name: Build assets
+        # run: npm run production
       - name: Upload code to server
         uses: actions/upload-artifact@main
         with:
           host: echogg.eu
           username: codex.echogg.eu
-          password: ${{ secrets.DEPLOY_PASSWORD }}
+          password: ${{ secrets.ftp_password }}
           source: ./
           target: /echogg.eu/web
