@@ -1,28 +1,4 @@
-# name: Deploy to Staging
-
-# on:
-#   push:
-#     branches:
-#       - master
-
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - name: Install dependencies
-#         run: composer install --no-dev --optimize-autoloader
-#       - name: Build assets
-#         run: npm install && npm run build
-#       - name: Upload code to server
-#         uses: SamKirkland/FTP-Deploy-Action@4.3.3
-#         with:
-#           server: echogg.eu
-#           username: codex.echogg.eu
-#           password: ${{ secrets.ftp_password }}
-#           server-dir: /echogg.eu/web/
-
-name: Deploy Laravel 9
+name: Deploy to Staging
 
 on:
   push:
@@ -30,12 +6,18 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install lftp
-        run: apt-get update && apt-get install -y lftp
-      - name: Deploy changed files
-        run: |
-          lftp -c "open ftp://codex.echogg.eu:${{ secrets.ftp_password }}@echogg.eu; set ftp:ssl-allow no; mirror -R -e --delete --exclude='.git' . /echogg.eu/web/"
+      - name: Install dependencies
+        run: composer install --no-dev --optimize-autoloader
+      - name: Build assets
+        run: npm install && npm run build
+      - name: Upload code to server
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: echogg.eu
+          username: codex.echogg.eu
+          password: ${{ secrets.ftp_password }}
+          server-dir: /echogg.eu/web/
