@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # - name: Install dependencies
-        # run: composer install --no-dev --optimize-autoloader
+      - name: Install dependencies
+        run: composer install --no-dev --optimize-autoloader
       # - name: Build assets
         # run: npm run production
       - name: Upload code to server
