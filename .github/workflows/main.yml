@@ -15,11 +15,10 @@ jobs:
       # - name: Build assets
         # run: npm run production
       - name: Upload code to server
-        uses: samuelbetio/ftp-deploy-action@v3
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           host: echogg.eu
           username: codex.echogg.eu
           password: ${{ secrets.ftp_password }}
-          local_dir: ./
-          remote_dir: /echogg.eu/web
-          exclude: .git
+          # source: ./
+          server_dir: /echogg.eu/web
