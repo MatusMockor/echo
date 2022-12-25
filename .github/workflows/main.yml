@@ -20,5 +20,6 @@ jobs:
           host: echogg.eu
           username: codex.echogg.eu
           password: ${{ secrets.ftp_password }}
-          source: ./
-          target: /echogg.eu/web
+          local_dir: ./
+          remote_dir: /echogg.eu/web
+          exclude: .git
