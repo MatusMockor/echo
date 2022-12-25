@@ -9,18 +9,15 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install dependencies
         run: composer install --no-dev --optimize-autoloader
-      - name: Generate application key
-        run: php artisan key:generate
       - name: Build assets
-        run: npm run production
+        run: npm run build
       - name: Upload code to server
-        uses: meliora/ftp-deploy-action@v3
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          host: echogg.eu
+          server: echogg.eu
           username: codex.echogg.eu
-          password: ${{ secrets.DEPLOY_PASSWORD }}
-          source: ./
-          target: /echogg.eu/web
+          password: ${{ secrets.ftp_password }}
+          server-dir: /echogg.eu/web/
