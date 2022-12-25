@@ -17,7 +17,7 @@ jobs:
       - name: Build assets
         run: npm run production
       - name: Upload code to server
-        uses: actions/upload-artifact@man
+        uses: actions/upload-artifact@main
         with:
           host: echogg.eu
           username: codex.echogg.eu
