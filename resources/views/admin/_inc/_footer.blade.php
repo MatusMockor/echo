@@ -16,5 +16,7 @@
 
 <!-- plugins:js -->
 <script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
+<script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
+<script src="{{asset('assets/js/template.js')}}"></script>
 </body>
 </html>
