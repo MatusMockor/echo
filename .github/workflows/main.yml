@@ -7,11 +7,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-#      - uses: actions/checkout@v3
-#      - name: Install dependencies
-#        run: composer install --no-dev --optimize-autoloader
-#      - name: Build assets
-#        run: npm install && npm run build
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: composer install --no-dev --optimize-autoloader
+      - name: Build assets
+        run: npm install && npm run build
       - name: Upload code to server
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
@@ -25,7 +25,6 @@ jobs:
 #  push:
 #    branches:
 #      - master
-
 #jobs:
 #  build-and-deploy:
 #    runs-on: ubuntu-latest
@@ -47,4 +46,3 @@ jobs:
 #          password: ${{ secrets.ftp_password }}
 #          server-dir: /echogg.eu/web/
 #          exclude: ${{ steps.changed_files.outputs.files }}
-
