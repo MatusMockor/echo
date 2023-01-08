@@ -15,4 +15,5 @@ yarn-error.log
 /.idea
 /.vscode
 _ide_helper.php
+.env.testing
 .github
