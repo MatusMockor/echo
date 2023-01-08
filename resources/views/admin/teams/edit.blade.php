@@ -14,8 +14,8 @@
                         @method('DELETE')
                     </form>
                 </div>
-                <edit-team-form
-                        send-form-route="{{$updateRoute}}"
+                <team-form
+                        route-send-form="{{route('teams.update', ['team' => $team->slug])}}"
                         route-back="{{route('teams.index')}}"
                         :team="{{json_encode($team)}}"
                 />

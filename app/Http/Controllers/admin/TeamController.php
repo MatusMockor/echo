@@ -4,7 +4,6 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StoreTeamRequest;
-use App\Http\Requests\UpdateTeamRequest;
 use App\Models\Team;
 
 class TeamController extends Controller
@@ -39,7 +38,7 @@ class TeamController extends Controller
         $team->slug = \Str::slug($request->name);
         $team->save();
 
-        return response()->json(['status' => 200]);
+        return response()->json(['status' => 200, 'message' => Team::CREATE_MESSAGE]);
     }
 
     /**
@@ -55,20 +54,18 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        $updateRoute = route('teams.update', ['team' => $team->slug]);
-
         return view('admin.teams.edit', [
-            'team'        => $team,
-            'updateRoute' => $updateRoute,
+            'team' => $team,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTeamRequest $request, Team $team)
+    public function update(StoreTeamRequest $request, Team $team)
     {
         $team->update($request->validated());
+        return response()->json(['status' => 200, 'message' => Team::EDIT_MESSAGE]);
     }
 
     /**
