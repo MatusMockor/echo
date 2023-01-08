@@ -39,7 +39,7 @@ class TeamController extends Controller
         $team->slug = \Str::slug($request->name);
         $team->save();
 
-        return response()->json(['status' => 200]);
+        return response()->json(['status' => 200, 'message' => Team::CREATE_MESSAGE]);
     }
 
     /**
@@ -55,11 +55,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        $updateRoute = route('teams.update', ['team' => $team->slug]);
-
         return view('admin.teams.edit', [
-            'team'        => $team,
-            'updateRoute' => $updateRoute,
+            'team' => $team,
         ]);
     }
 
@@ -69,6 +66,7 @@ class TeamController extends Controller
     public function update(UpdateTeamRequest $request, Team $team)
     {
         $team->update($request->validated());
+        return response()->json(['status' => 200, 'message' => Team::EDIT_MESSAGE]);
     }
 
     /**
