@@ -7,9 +7,9 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Now you can create amazing Team section</h4>
-                <create-team-form
-                        route-send-form="{{route('players.store')}}"
-                        route-back="{{ route('players.index')  }}"
+                <team-form
+                        route-send-form="{{route('teams.store')}}"
+                        route-back="{{ route('teams.index')  }}"
                 />
             </div>
         </div>
