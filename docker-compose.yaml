@@ -14,8 +14,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
       POSTGRES_DB: meilora
     volumes:
       - ./nest:/var/www/meilora
