@@ -30,11 +30,9 @@ class TeamControllerTest extends TestCase
         /** @var Team $team */
         $team = Team::factory()->create();
 
-        $response = $this->patch(route('teams.update', ['team' => $team->slug]), [
+        $this->patch(route('teams.update', ['team' => $team->slug]), [
             'name' => 'Test',
-            'body' => $team->body
-        ]);
-
-        $this->assertEquals(200, $response->status());
+            'body' => $team->body,
+        ])->assertStatus(200);
     }
 }
