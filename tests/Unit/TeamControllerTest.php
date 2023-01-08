@@ -3,12 +3,14 @@
 namespace Tests\Unit;
 
 use App\Models\Team;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
 class TeamControllerTest extends TestCase
 {
     use WithoutMiddleware;
+    use RefreshDatabase;
 
     /** @test */
     public function user_can_create_team()
@@ -18,6 +20,6 @@ class TeamControllerTest extends TestCase
             'body' => 'amazing Team',
         ]);
 
-        $this->assertEquals(1, Team::count());
+        $this->assertDatabaseCount('teams', 1);
     }
 }
