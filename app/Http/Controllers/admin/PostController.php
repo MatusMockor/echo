@@ -4,7 +4,6 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Services\UploadService;
 
@@ -77,7 +76,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Post $post, UpdatePostRequest $request)
+    public function update(Post $post, StorePostRequest $request)
     {
         $post->update($request->safe()->except(['image']));
 
