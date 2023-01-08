@@ -1,6 +1,6 @@
 APP_NAME=Laravel
 APP_ENV=local
-#APP_KEY = run command php artisan key:generate
+APP_KEY=base64:8sqAH0r/AqZj6tXR0oQRYrhrWEdXu83KpcChMdKehzw=
 APP_DEBUG=true
 APP_URL=http://localhost
 
@@ -17,7 +17,7 @@ DB_PASSWORD=admin
 
 DB_TEST_CONNECTION=pgsql
 DB_TEST_HOST=127.0.0.1
-DB_TEST_PORT=1234
+DB_TEST_PORT=5432
 DB_TEST_DATABASE=meilora-test
 DB_TEST_USERNAME=test
 DB_TEST_PASSWORD=test
