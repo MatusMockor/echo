@@ -1,21 +1,10 @@
 services:
-  meilora-test:
-    image: postgres
-    ports:
-      - 1234:1234
-    environment:
-      POSTGRES_USER: test
-      POSTGRES_PASSWORD: test
-      POSTGRES_DB: meilora-test
   meilora:
-    depends_on:
-      - meilora-test
     image: postgres
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: test
-      POSTGRES_PASSWORD: test
-      POSTGRES_DB: meilora
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
     volumes:
       - ./nest:/var/www/meilora
