@@ -32,6 +32,9 @@ class Team extends Model
 {
     use HasFactory;
 
+    const CREATE_MESSAGE = 'Create Success';
+    const EDIT_MESSAGE = 'Edit Success';
+
     protected $fillable = [
         'name',
         'body',
