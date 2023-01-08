@@ -22,4 +22,19 @@ class TeamControllerTest extends TestCase
 
         $this->assertDatabaseCount('teams', 1);
     }
+
+    /** @test */
+    public function user_can_edit_team()
+    {
+        $this->withoutExceptionHandling();
+        /** @var Team $team */
+        $team = Team::factory()->create();
+
+        $response = $this->patch(route('teams.update', ['team' => $team->slug]), [
+            'name' => 'Test',
+            'body' => $team->body
+        ]);
+
+        $this->assertEquals(200, $response->status());
+    }
 }
