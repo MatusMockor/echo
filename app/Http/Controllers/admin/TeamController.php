@@ -63,7 +63,7 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTeamRequest $request, Team $team)
+    public function update(StoreTeamRequest $request, Team $team)
     {
         $team->update($request->validated());
         return response()->json(['status' => 200, 'message' => Team::EDIT_MESSAGE]);
