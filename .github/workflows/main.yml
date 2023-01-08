@@ -1,25 +1,3 @@
-#name: Deploy to Staging
-#on:
-#  push:
-#    branches:
-#      - master
-#jobs:
-#  build-and-deploy:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Install dependencies
-#        run: composer install --no-dev --optimize-autoloader
-#      - name: Build assets
-#        run: npm install && npm run build
-#      - name: Upload code to server
-#        uses: SamKirkland/FTP-Deploy-Action@4.3.3
-#        with:
-#          server: echogg.eu
-#          username: codex.echogg.eu
-#          password: ${{ secrets.ftp_password }}
-#          server-dir: /echogg.eu/web/
-
 name: Deploy to Staging
 on:
   push:
@@ -30,19 +8,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Determine changed files
-        run: git diff --name-only HEAD
-        shell: bash
-        id: changed_files
       - name: Install dependencies
         run: composer install --no-dev --optimize-autoloader
       - name: Build assets
         run: npm install && npm run build
-      - name: Deploy changed files to server
+      - name: Upload code to server
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: echogg.eu
           username: codex.echogg.eu
           password: ${{ secrets.ftp_password }}
           server-dir: /echogg.eu/web/
-          exclude: ${{ steps.changed_files.outputs.files }}
+
+#name: Deploy to Staging
+#on:
+#  push:
+#    branches:
+#      - master
+#jobs:
+#  build-and-deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Determine changed files
+#        run: git diff --name-only HEAD~1 HEAD
+#        shell: bash
+#        id: changed_files
+#      - name: Install dependencies
+#        run: composer install --no-dev --optimize-autoloader
+#      - name: Build assets
+#        run: npm install && npm run build
+#      - name: Deploy changed files to server
+#        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+#        with:
+#          server: echogg.eu
+#          username: codex.echogg.eu
+#          password: ${{ secrets.ftp_password }}
+#          server-dir: /echogg.eu/web/
+#          exclude: ${{ steps.changed_files.outputs.files }}
